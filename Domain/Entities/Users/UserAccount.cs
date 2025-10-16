@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project.Domain.Entities.User
+namespace Project.Domain.Entities.Users
 {
     public class UserAccount
     {

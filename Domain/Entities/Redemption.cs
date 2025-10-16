@@ -23,5 +23,15 @@ namespace Project.Domain.Entities
             Status = status;
             Timestamp = DateTime.UtcNow;
         }
+
+        internal void MarkCompleted()
+        {
+            Status = RedemptionStatus.Approved;
+        }
+
+        internal void MarkFailed()
+        {
+            Status = RedemptionStatus.Rejected;
+        }
     }
 }

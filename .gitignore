@@ -1,0 +1,55 @@
+# Build folders
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# IDE directories
+.vs/
+.idea/
+.vscode/
+
+# Build results
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+# Test results
+TestResults/
+*.coverage
+*.coveragexml
+
+# Package folders
+packages/
+.nuget/
+*.nupkg
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+*.DS_Store
+Thumbs.db
+
+# Publish output
+publish/
+wwwroot/
+
+# Rider specific
+.idea/
+
+# Environment and secrets
+*.env
+appsettings.Development.json
+secrets.json
+
+# Optional: ignore your local tools
+tools/

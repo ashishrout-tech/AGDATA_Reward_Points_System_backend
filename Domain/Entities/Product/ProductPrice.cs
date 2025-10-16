@@ -9,19 +9,22 @@ namespace Project.Domain.Entities.Product
     public class ProductPrice
     {
         public Guid ProductId { get; }
-        public decimal CurrentPrice { get; private set; }
-        public string Currency { get; }
+        public decimal CurrentPoints { get; private set; }
+        public DateTime CreatedAt { get; }
+        public DateTime UpdatedAt { get; private set; }
 
-        public ProductPrice(Guid productId, decimal initialPrice, string currency = "INR")
+        public ProductPrice(Guid productId, decimal initialPoints)
         {
             ProductId = productId;
-            CurrentPrice = initialPrice;
-            Currency = currency;
+            CurrentPoints = initialPoints;
+            CreatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.UtcNow;
         }
 
-        public void UpdatePrice(decimal newPrice)
+        public void UpdatePoints(decimal newPoints)
         {
-            CurrentPrice = newPrice;
+            CurrentPoints = newPoints;
+            UpdatedAt = DateTime.UtcNow;
         }
     }
 }

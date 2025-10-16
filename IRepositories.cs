@@ -1,6 +1,8 @@
 ﻿using Project.Domain.Entities;
+using Project.Domain.Entities.Event;
 using Project.Domain.Entities.Product;
-using Project.Domain.Entities.User;
+using Project.Domain.Entities.Users;
+using Project.Domain.Enums;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -40,7 +42,7 @@ namespace Project
     {
         ProductPrice Add(ProductPrice pp);
         ProductPrice? GetByProductId(Guid productId);
-        void UpdatePrice(Guid productId, decimal newPrice);
+        void UpdatePoints(Guid productId, decimal newPoints);
     }
 
     public interface IProductStockRepository
