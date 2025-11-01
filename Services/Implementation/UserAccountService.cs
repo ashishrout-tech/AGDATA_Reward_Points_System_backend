@@ -1,5 +1,5 @@
 ﻿using Project.Common;
-using Project.Domain.Entities.User;
+using Project.Domain.Entities.Users;
 using Project.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Project.Services.Implementation
 {
-    public class UserAccountService: IUserAccountService
+    public class UserAccountService : IUserAccountService
     {
         public Result RedeemPoints(UserAccount account, int points)
         {
