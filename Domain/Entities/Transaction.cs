@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,15 @@ namespace Project.Domain.Entities
 
         public Transaction(Guid userId, TransactionType type, int points, string details)
         {
+            if (userId == Guid.Empty)
+                throw new ArgumentException("UserId cannot be empty.", nameof(userId));
+            if (!Enum.IsDefined(typeof(TransactionType), type))
+                throw new ArgumentException("Invalid transaction type.", nameof(type));
+            if (points <= 0)
+                throw new ArgumentOutOfRangeException(nameof(points), "Points must be greater than zero.");
+            if (string.IsNullOrWhiteSpace(details))
+                throw new ArgumentException("Details cannot be null or whitespace.", nameof(details));
+
             Id = Guid.NewGuid();
             UserId = userId;
             Type = type;

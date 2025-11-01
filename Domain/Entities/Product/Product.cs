@@ -18,6 +18,13 @@ namespace Project.Domain.Entities.Product
 
         public Product(string name, string description, string brand)
         {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Product name cannot be null or empty.", nameof(name));
+            if (string.IsNullOrWhiteSpace(description))
+                throw new ArgumentException("Product description cannot be null or empty.", nameof(description));
+            if (string.IsNullOrWhiteSpace(brand))
+                throw new ArgumentException("Product brand cannot be null or empty.", nameof(brand));
+
             Id = Guid.NewGuid();
             Name = name;
             Description = description;
@@ -29,6 +36,13 @@ namespace Project.Domain.Entities.Product
 
         public void UpdateDetails(string name, string description, string brand)
         {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Product name cannot be null or empty.", nameof(name));
+            if (string.IsNullOrWhiteSpace(description))
+                throw new ArgumentException("Product description cannot be null or empty.", nameof(description));
+            if (string.IsNullOrWhiteSpace(brand))
+                throw new ArgumentException("Product brand cannot be null or empty.", nameof(brand));
+
             Name = name;
             Description = description;
             Brand = brand;
@@ -37,12 +51,18 @@ namespace Project.Domain.Entities.Product
 
         public void Deactivate()
         {
+            if (!IsActive)
+                throw new InvalidOperationException("Product is already deactivated.");
+
             IsActive = false;
             UpdatedAt = DateTime.UtcNow;
         }
 
         public void Activate()
         {
+            if (IsActive)
+                throw new InvalidOperationException("Product is already active.");
+
             IsActive = true;
             UpdatedAt = DateTime.UtcNow;
         }

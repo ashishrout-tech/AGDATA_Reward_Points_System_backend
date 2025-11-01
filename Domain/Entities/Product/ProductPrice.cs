@@ -9,19 +9,30 @@ namespace Project.Domain.Entities.Product
     public class ProductPrice
     {
         public Guid ProductId { get; }
-        public decimal CurrentPrice { get; private set; }
-        public string Currency { get; }
+        public decimal CurrentPoints { get; private set; }
+        public DateTime CreatedAt { get; }
+        public DateTime UpdatedAt { get; private set; }
 
-        public ProductPrice(Guid productId, decimal initialPrice, string currency = "INR")
+        public ProductPrice(Guid productId, decimal initialPoints)
         {
+            if (productId == Guid.Empty)
+                throw new ArgumentException("ProductId cannot be empty.", nameof(productId));
+            if (initialPoints < 0)
+                throw new ArgumentOutOfRangeException(nameof(initialPoints), "Initial points cannot be negative.");
+
             ProductId = productId;
-            CurrentPrice = initialPrice;
-            Currency = currency;
+            CurrentPoints = initialPoints;
+            CreatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.UtcNow;
         }
 
-        public void UpdatePrice(decimal newPrice)
+        public void UpdatePoints(decimal newPoints)
         {
-            CurrentPrice = newPrice;
+            if (newPoints < 0)
+                throw new ArgumentOutOfRangeException(nameof(newPoints), "Points cannot be negative.");
+
+            CurrentPoints = newPoints;
+            UpdatedAt = DateTime.UtcNow;
         }
     }
 }
