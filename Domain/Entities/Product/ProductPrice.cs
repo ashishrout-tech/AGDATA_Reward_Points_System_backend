@@ -15,6 +15,11 @@ namespace Project.Domain.Entities.Product
 
         public ProductPrice(Guid productId, decimal initialPoints)
         {
+            if (productId == Guid.Empty)
+                throw new ArgumentException("ProductId cannot be empty.", nameof(productId));
+            if (initialPoints < 0)
+                throw new ArgumentOutOfRangeException(nameof(initialPoints), "Initial points cannot be negative.");
+
             ProductId = productId;
             CurrentPoints = initialPoints;
             CreatedAt = DateTime.UtcNow;
@@ -23,6 +28,9 @@ namespace Project.Domain.Entities.Product
 
         public void UpdatePoints(decimal newPoints)
         {
+            if (newPoints < 0)
+                throw new ArgumentOutOfRangeException(nameof(newPoints), "Points cannot be negative.");
+
             CurrentPoints = newPoints;
             UpdatedAt = DateTime.UtcNow;
         }

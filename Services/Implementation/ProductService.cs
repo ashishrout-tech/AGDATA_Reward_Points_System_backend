@@ -58,5 +58,10 @@ namespace Project.Services.Implementation
                 _products.Update(product);
             }
         }
+
+        public decimal GetCurrentProductPoints(ProductPrice productPrice)
+        {
+            return productPrice.CurrentPoints;
+        }
     }
 }

@@ -14,6 +14,9 @@ namespace Project.Domain.Entities.Users
 
         public UserAccount(Guid userId)
         {
+            if (userId == Guid.Empty)
+                throw new ArgumentException("UserId cannot be empty.", nameof(userId));
+
             Id = Guid.NewGuid();
             UserId = userId;
             Points = 0;
@@ -21,11 +24,20 @@ namespace Project.Domain.Entities.Users
 
         internal void AddPoints(int points)
         {
+            if (points <= 0)
+                throw new ArgumentOutOfRangeException(nameof(points), "Points to add must be positive.");
+
             Points += points;
         }
 
         internal void RedeemPoints(int points)
         {
+            if (points <= 0)
+                throw new ArgumentOutOfRangeException(nameof(points), "Points to redeem must be positive.");
+
+            if (points > Points)
+                throw new InvalidOperationException("Cannot redeem more points than available.");
+
             Points -= points;
         }
     }

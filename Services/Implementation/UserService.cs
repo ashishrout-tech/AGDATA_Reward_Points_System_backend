@@ -1,6 +1,7 @@
 ﻿using Project.Domain.Entities.Users;
 using Project.Domain.Enums;
 using Project.Services.Interfaces;
+using Project.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
