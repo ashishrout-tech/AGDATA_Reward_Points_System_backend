@@ -9,12 +9,16 @@ namespace Project.Domain.Entities.Users
 {
     public class User
     {
-        public Guid Id { get; }
+        public Guid Id { get; private set; }
         public string Name { get; }
-        public string Email { get; }
-        public string EmployeeId { get; }
+        public string Email { get; private set; } = null!;
+        public string EmployeeId { get; private set; } = null!;
         public UserRole Role { get; private set; }
         public bool IsActive { get; private set; }
+
+        public UserAccount UserAccount { get; private set; } = null!;
+
+        private User() { }
 
         public User(string name, string email, string employeeId, UserRole role)
         {

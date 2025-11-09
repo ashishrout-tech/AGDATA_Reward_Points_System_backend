@@ -9,11 +9,14 @@ namespace Project.Domain.Entities.Event
     public class Event
     {
         public Guid Id {  get; private set; }
-        public string Title { get; private set; }
-        public EventMetadata Metadata { get; private set; } = null!;
-        public EventSchedule Schedule { get; private set; } = null!;
+        public Guid EventMetadataId { get; private set; }
+        public Guid EventScheduleId { get; private set; }
+        public string Title { get; private set; } = null!;
         public bool IsCancelled { get; private set; }
         public ICollection<EventParticipant> Participants { get; private set; } = new List<EventParticipant>();
+        public EventMetadata EventMetadata { get; private set; } = null!;
+        public EventSchedule EventSchedule { get; private set; } = null!;
+        private Event() { }
 
         public Event(string title, string description, EventMetadata metadata, EventSchedule schedule)
         {

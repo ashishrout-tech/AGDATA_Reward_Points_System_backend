@@ -9,13 +9,15 @@ namespace Project.Domain.Entities.Product
     public class Product
     {
         public Guid Id { get; }
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public string Brand { get; private set; }
+        public string Name { get; private set; } = null!;
+        public string Description { get; private set; } = null!;
+        public string Brand { get; private set; } = null!;
         public DateTime CreatedAt { get; }
         public DateTime UpdatedAt { get; private set; }
         public bool IsActive { get; private set; }
-
+        public ProductPrice ProductPrice { get; private set; } = null!;
+        public ProductStock ProductStock { get; private set; } = null!;
+        private Product() {}
         public Product(string name, string description, string brand)
         {
             if (string.IsNullOrWhiteSpace(name))

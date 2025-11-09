@@ -27,9 +27,9 @@ namespace Project.Services.Implementation
             var userAccount = _usersAccount.GetAccountByUserId(userId);
             var userPoints = userAccount.Points;
             var productPoints = _productsPoint.GetByProductId(productId);
-            var requiredPoints = productPoints.CurrentPoints;
+            var requiredPoints = productPoints?.CurrentPoints;
             if (requiredPoints > userPoints) throw new InvalidOperationException("Not enough points");
-            userAccount.RedeemPoints((int)requiredPoints);
+            userAccount.RedeemPoints((int)requiredPoints!);
             var redemption = new Redemption(userId, productId, RedemptionStatus.Pending);
             _redemptions.Add(redemption);
             return redemption;

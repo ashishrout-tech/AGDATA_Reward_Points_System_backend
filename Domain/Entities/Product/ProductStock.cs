@@ -10,6 +10,8 @@ namespace Project.Domain.Entities.Product
     {
         public Guid ProductId { get; }
         public int AvailableStock { get; private set; }
+        public Product Product { get; private set; } = null!;
+        private ProductStock() { }
 
         public ProductStock(Guid productId, int initialStock)
         {

@@ -12,6 +12,10 @@ namespace Project.Domain.Entities.Users
         public Guid UserId { get; }
         public int Points { get; private set; }
 
+        public User User { get; private set; } = null!;
+
+        private UserAccount() { }
+
         public UserAccount(Guid userId)
         {
             if (userId == Guid.Empty)

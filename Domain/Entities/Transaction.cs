@@ -1,4 +1,5 @@
 ﻿using Project.Domain.Enums;
+using Project.Domain.Entities.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace Project.Domain.Entities
     {
         public Guid Id { get; private set; }
         public Guid UserId { get; private set; }
-        public TransactionType Type { get; private set;  }
+        public User User { get; private set; } = null!;
+        public TransactionType Type { get; private set; }
         public int Points { get; private set; }
-        public string Details { get; private set; }
+        public string Details { get; private set; } = null!;
         public DateTime TimeStamp { get; private set; }
+        private Transaction() { }
 
         public Transaction(Guid userId, TransactionType type, int points, string details)
         {

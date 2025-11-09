@@ -9,8 +9,13 @@ namespace Project.Domain.Entities.Event
 {
     public class EventMetadata
     {
-        public User Organizer { get; private set; }
+        public Guid Id { get; set; }
+        public Guid EventId { get; set; }
+        public Guid OrganizerId { get; private set; }
+        public Event Event { get; private set; } = null!;
+        public User Organizer { get; private set; } = null!;
         public List<string> Tags { get; private set; } = new();
+        public EventMetadata() { }
 
         public EventMetadata(User organizer)
         {

@@ -12,6 +12,8 @@ namespace Project.Domain.Entities.Product
         public decimal CurrentPoints { get; private set; }
         public DateTime CreatedAt { get; }
         public DateTime UpdatedAt { get; private set; }
+        public Product Product { get; private set; } = null!;
+        private ProductPrice() {}
 
         public ProductPrice(Guid productId, decimal initialPoints)
         {

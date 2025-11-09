@@ -15,4 +15,13 @@ namespace Project.Domain.Interfaces
         List<Redemption> GetPendingByProductId(Guid productId);
         void Update(Redemption r);
     }
+
+    public interface IRedemptionAsyncRepository
+    {
+        Task<Redemption> AddAsync(Redemption redemption, CancellationToken cancellationToken = default);
+        Task<Redemption?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<List<Redemption>> GetByUserIdAsync(Guid userId, CancellationToken cancellationToken = default);
+        Task<List<Redemption>> GetPendingByProductIdAsync(Guid productId, CancellationToken cancellationToken = default);
+        Task UpdateAsync(Redemption redemption, CancellationToken cancellationToken = default);
+    }
 }

@@ -16,6 +16,9 @@ namespace Project.Domain.Entities.Event
         public ParticipantRole Role { get; private set; } = ParticipantRole.Attendee;
         public int? Rank { get; private set; }
         public DateTime JoinedAt { get; private set; } = DateTime.UtcNow;
+        public Event Event { get; private set; } = null!;
+        public User User { get; private set; } = null!;
+        private EventParticipant() { }
 
         public EventParticipant(Guid eventId, Guid userId, ParticipantRole role = ParticipantRole.Attendee)
         {

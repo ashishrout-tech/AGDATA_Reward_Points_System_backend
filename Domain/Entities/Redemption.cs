@@ -1,4 +1,6 @@
 ﻿using Project.Domain.Enums;
+using Project.Domain.Entities.Users;
+using Project.Domain.Entities.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +14,11 @@ namespace Project.Domain.Entities
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
         public Guid ProductId { get; set; }
+        public User User { get; set; } = null!;
+        public Product.Product Product { get; set; } = null!;
         public RedemptionStatus Status { get; set; }
         public DateTime Timestamp { get; set; }
+        public Redemption() { }
 
         public Redemption(Guid userId, Guid productId, RedemptionStatus status)
         {

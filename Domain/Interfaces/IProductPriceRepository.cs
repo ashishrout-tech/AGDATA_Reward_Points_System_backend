@@ -13,4 +13,11 @@ namespace Project.Domain.Interfaces
         ProductPrice? GetByProductId(Guid productId);
         void UpdatePoints(Guid productId, decimal newPoints);
     }
+
+    public interface IProductPriceAsyncRepository
+    {
+        Task<ProductPrice> AddAsync(ProductPrice productPrice, CancellationToken cancellationToken = default);
+        Task<ProductPrice?> GetByProductIdAsync(Guid productId, CancellationToken cancellationToken = default);
+        Task UpdatePointsAsync(Guid productId, decimal newPoints, CancellationToken cancellationToken = default);
+    }
 }

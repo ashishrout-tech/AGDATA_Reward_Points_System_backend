@@ -8,8 +8,12 @@ namespace Project.Domain.Entities.Event
 {
     public class EventSchedule
     {
+        public Guid Id { get; set; }
+        public Guid EventId { get; set; }
+        public Event Event { get; private set; } = null!;
         public DateTime StartTime { get; private set; }
         public DateTime EndTime { get; private set; }
+        public EventSchedule() { }
 
         public EventSchedule(DateTime startTime, DateTime endTime)
         {
