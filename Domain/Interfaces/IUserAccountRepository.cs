@@ -13,4 +13,11 @@ namespace Project.Domain.Interfaces
         void UpdateAccount(Guid userId, int points);
         UserAccount GetAccountByUserId(Guid userId);
     }
+
+    public interface IUserAccountAsyncRepository
+    {
+        Task<UserAccount> AddAsync(UserAccount userAccount, CancellationToken cancellationToken = default);
+        Task UpdateAccountAsync(Guid userId, int points, CancellationToken cancellationToken = default);
+        Task<UserAccount?> GetAccountByUserIdAsync(Guid userId, CancellationToken cancellationToken = default);
+    }
 }

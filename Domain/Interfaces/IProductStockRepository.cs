@@ -13,4 +13,11 @@ namespace Project.Domain.Interfaces
         ProductStock? GetByProductId(Guid productId);
         void UpdateStock(Guid productId, int newStock);
     }
+
+    public interface IProductStockAsyncRepository
+    {
+        Task<ProductStock> AddAsync(ProductStock productStock, CancellationToken cancellationToken = default);
+        Task<ProductStock?> GetByProductIdAsync(Guid productId, CancellationToken cancellationToken = default);
+        Task UpdateStockAsync(Guid productId, int newStock, CancellationToken cancellationToken = default);
+    }
 }

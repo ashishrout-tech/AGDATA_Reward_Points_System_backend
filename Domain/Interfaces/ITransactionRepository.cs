@@ -12,4 +12,10 @@ namespace Project.Domain.Interfaces
         Transaction Add(Transaction t);
         List<Transaction> GetByUserId(Guid userId);
     }
+
+    public interface ITransactionAsyncRepository
+    {
+        Task<Transaction> AddAsync(Transaction transaction, CancellationToken cancellationToken = default);
+        Task<List<Transaction>> GetByUserIdAsync(Guid userId, CancellationToken cancellationToken = default);
+    }
 }

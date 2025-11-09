@@ -15,4 +15,13 @@ namespace Project.Domain.Interfaces
         void Remove(Guid id);
         List<Product> GetAll();
     }
+
+    public interface IProductAsyncRepository
+    {
+        Task<Product> AddAsync(Product product, CancellationToken cancellationToken = default);
+        Task<Product?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+        Task UpdateAsync(Product product, CancellationToken cancellationToken = default);
+        Task RemoveAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<List<Product>> GetAllAsync(CancellationToken cancellationToken = default);
+    }
 }
