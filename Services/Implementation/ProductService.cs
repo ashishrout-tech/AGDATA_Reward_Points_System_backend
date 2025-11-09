@@ -1,4 +1,5 @@
 ﻿using Project.Domain.Entities.Product;
+using Project.Domain.Interfaces;
 using Project.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -57,6 +58,11 @@ namespace Project.Services.Implementation
                 product.Activate();
                 _products.Update(product);
             }
+        }
+
+        public decimal GetCurrentProductPoints(ProductPrice productPrice)
+        {
+            return productPrice.CurrentPoints;
         }
     }
 }

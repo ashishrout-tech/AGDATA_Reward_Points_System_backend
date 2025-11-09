@@ -1,4 +1,5 @@
 ﻿using Project.Domain.Entities.Product;
+using Project.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +18,15 @@ namespace Project.Services.Implementation
         public decimal GetCurrentPrice(Guid productId)
         {
             ProductPrice? productPrice = _productPrices.GetByProductId(productId);
-            return productPrice?.CurrentPrice ?? 0;
+            return productPrice?.CurrentPoints ?? 0;
         }
         public void UpdatePrice(Guid productId, decimal newPrice)
         {
             ProductPrice? productPrice = _productPrices.GetByProductId(productId);
             if (productPrice != null)
             {
-                productPrice.UpdatePrice(newPrice);
-                _productPrices.UpdatePrice(productId, newPrice);
+                productPrice.UpdatePoints(newPrice);
+                _productPrices.UpdatePoints(productId, newPrice);
             }
         }
     }
